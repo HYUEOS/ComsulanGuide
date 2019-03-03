@@ -24,8 +24,8 @@ public class MainActivity extends AuthActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtnLogin = findViewById(R.id.auth_btn_login);
-        mTvEmail = findViewById(R.id.auth_tv_email);
+        mBtnLogin = findViewById(R.id.main_btn_login);
+        mTvEmail = findViewById(R.id.main_tv_email);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,9 +37,9 @@ public class MainActivity extends AuthActivity {
         checkAuthState(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
                     mTvEmail.setText("로그인 상태가 아닙니다.");
-                }else{
+                } else {
                     mTvEmail.setText(firebaseAuth.getCurrentUser().getEmail());
                 }
             }
